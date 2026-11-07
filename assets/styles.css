@@ -324,3 +324,11 @@ body.cart-open .drawer { transform: none; }
 .roots-feature .muted { color: var(--muted); }
 .roots-feature .split-photo { display: block; aspect-ratio: 1; }
 .roots-feature .split-photo img { object-fit: contain; }
+/* Phones: the collection buttons become one row you swipe sideways, so products start sooner. */
+@media (max-width: 700px) {
+  .chips { flex-wrap: nowrap; overflow-x: auto; margin: 0 -20px 22px; padding: 0 20px 4px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .chips::-webkit-scrollbar { display: none; }
+  .chip { flex: none; padding: 7px 13px; font-size: 13.5px; }
+  .page-hero { padding-bottom: 12px; }
+  .page-hero .lede { font-size: 15px; line-height: 1.55; }
+}

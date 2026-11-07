@@ -174,6 +174,21 @@ if (pdp) {
     }
     stage.innerHTML = mockupSVG(p.garment, o.Design || o.Colour || '', hasDesign ? {} : { text: 'From Scratch' });
   };
+  // A design or colour chosen on a collection page arrives as ?d=... and is picked here.
+  const wanted = new URLSearchParams(location.search).get('d');
+  const wantedOpt = wanted && p.options.find(o => o.name !== 'Size' && o.values.includes(wanted));
+  if (wantedOpt) {
+    const sel = $(`select[name="opt-${wantedOpt.name}"]`, pdp);
+    if (sel) sel.value = wanted;
+    else {
+      const inp = $$(`input[name="opt-${wantedOpt.name}"]`, pdp).find(i => i.value === wanted);
+      if (inp) {
+        inp.checked = true;
+        const box = inp.closest('.swatches'), tile = inp.closest('label');
+        if (box && tile) box.scrollTop = tile.getBoundingClientRect().top - box.getBoundingClientRect().top + box.scrollTop - (box.clientHeight - tile.clientHeight) / 2;
+      }
+    }
+  }
   pdp.addEventListener('change', e => { if (e.target.name?.startsWith('opt-')) paint(); });
   const qty = $('#qty');
   pdp.addEventListener('click', e => {
@@ -216,3 +231,10 @@ if (document.body.dataset.page === 'success') { cart = []; save(); }
 
 renderCart();
 if (new URLSearchParams(location.search).get('cart') === 'open') openCart();
+
+/* Collection buttons: on phones they scroll sideways, so bring the current one into view. */
+{
+  const cur = document.querySelector('.chips [aria-current="page"]');
+  const row = cur && cur.parentElement;
+  if (row && row.scrollWidth > row.clientWidth) row.scrollLeft = cur.offsetLeft - row.offsetLeft - 20;
+}
