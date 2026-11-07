@@ -69,7 +69,7 @@ h3 { font-size: 16px; font-weight: 600; letter-spacing: 0; }
 .logo .scratch { font: 30px/1 var(--script); color: var(--cream); }
 .logo > span:last-child { align-self: flex-start; padding-top: 4px; }
 .logo svg { display: block; width: 14px; height: 14px; color: var(--cream); }
-.nav { display: flex; gap: clamp(16px, 1.9vw, 26px); justify-content: center; }
+.nav { display: flex; gap: 18px; justify-content: center; }
 .nav a { text-decoration: none; font: 500 14px/1 var(--sans); white-space: nowrap; color: #fff; padding: 8px 0; border-bottom: 2px solid transparent; }
 .nav a:hover, .nav a[aria-current="page"] { border-color: #fff; }
 .cart-btn { justify-self: end; position: relative; background: none; border: 0; padding: 8px; display: flex; gap: 8px; align-items: center; cursor: pointer; font-weight: 500; font-size: 14px; }
@@ -78,7 +78,7 @@ h3 { font-size: 16px; font-weight: 600; letter-spacing: 0; }
 .menu-btn { display: none; background: none; border: 0; padding: 8px; cursor: pointer; }
 .menu-btn svg { width: 24px; height: 24px; }
 
-@media (max-width: 1180px) {
+@media (max-width: 1279px) {
   .menu-btn { display: block; }
   .nav { position: absolute; top: 68px; left: 0; right: 0; flex-direction: column; gap: 0; background: var(--brand); border-top: 1px solid rgba(255,255,255,.2); padding: 4px 20px 16px; transform: translateY(-8px); opacity: 0; visibility: hidden; transition: transform .2s, opacity .2s, visibility .2s; }
   .nav.open { transform: none; opacity: 1; visibility: visible; }
@@ -332,3 +332,44 @@ body.cart-open .drawer { transform: none; }
   .page-hero { padding-bottom: 12px; }
   .page-hero .lede { font-size: 15px; line-height: 1.55; }
 }
+
+/* ---------- food & drink and the book ---------- */
+.extras { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.extra-card { display: grid; grid-template-columns: 42% 1fr; gap: clamp(16px, 2.5vw, 28px); align-items: center; background: var(--bg-2); border-radius: var(--radius); padding: clamp(16px, 2.4vw, 24px); text-decoration: none; color: inherit; }
+.extra-card:hover .link-arrow { text-decoration: underline; }
+.extra-art { aspect-ratio: 3/4; border-radius: var(--radius); overflow: hidden; background: #fff; }
+.extra-art img { width: 100%; height: 100%; object-fit: cover; }
+.extra-art.food img { object-position: center top; }
+.extra-copy h2 { margin-bottom: 8px; }
+.extra-copy p { color: var(--muted); margin: 0 0 14px; }
+.extra-copy .kicker { margin-bottom: 6px; }
+@media (max-width: 900px) { .extras { grid-template-columns: 1fr; } }
+@media (max-width: 480px) { .extra-card { grid-template-columns: 38% 1fr; } .extra-copy h2 { font-size: 20px; } .extra-copy p { font-size: 14px; } }
+.order-note { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; background: var(--cream); border-radius: var(--radius); padding: 16px 20px; margin-bottom: 28px; }
+.order-note strong { color: #7d5629; }
+.order-note span { flex: 1 1 260px; }
+.menu-layout { display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(24px, 4vw, 48px); align-items: start; margin-bottom: 28px; }
+.menu-list { display: grid; gap: 16px; }
+.menu-item { border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px; }
+.menu-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.menu-head h3 { margin: 0 0 6px; font-size: 19px; }
+.menu-kind { font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--gold); }
+.menu-item p { margin: 0 0 6px; }
+.menu-meta { font-size: 14px; color: var(--muted); }
+.menu-meta strong { color: var(--text); font-weight: 600; }
+.menu-item .btn { margin-top: 8px; }
+.tbc-inline { color: #8a6a1c; font-style: italic; }
+.btn-sm { padding: 8px 14px; font-size: 13.5px; }
+.menu-flyer { margin: 0; position: sticky; top: 90px; }
+.menu-flyer img { width: 100%; border-radius: var(--radius); display: block; }
+.menu-flyer figcaption { font-size: 13px; color: var(--muted); margin-top: 8px; text-align: center; }
+@media (max-width: 800px) { .menu-layout { grid-template-columns: 1fr; } .menu-flyer { position: static; max-width: 420px; margin: 0 auto; } }
+.book-layout { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(24px, 4vw, 56px); align-items: center; }
+.book-art img { width: 100%; border-radius: var(--radius); display: block; }
+.book-copy h1 { margin-bottom: 6px; }
+.book-sub { font-size: 18px; font-weight: 600; margin: 0 0 6px; }
+.book-tag { color: var(--muted); font-style: italic; margin: 0 0 16px; }
+.book-copy .ctas { margin: 16px 0; }
+.book-text { max-width: 68ch; margin: clamp(32px, 5vw, 56px) auto 0; }
+.book-text p { color: var(--text); line-height: 1.7; }
+@media (max-width: 800px) { .book-layout { grid-template-columns: 1fr; } }
